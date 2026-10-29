@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#176b45">
+  <meta name="description" content="Eco Tracker helps you build simple, sustainable habits and track your daily environmental impact.">
+  <title>Eco Tracker — Small Steps, Greener Planet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Eco Tracker home">
+      <span class="brand-mark">🌿</span>
+      <span>eco<span class="brand-light">tracker</span></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#habits" class="nav-link">Track habits</a>
+      <a href="#tips" class="nav-link">Eco tips</a>
+      <a href="#progress" class="nav-link">My progress</a>
+      <a href="#about" class="nav-link">About</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
+  </header>
+
+  <main>
+    <section class="hero section-shell" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR DAILY DOSE OF GOOD</div>
+        <h1>Small steps.<br><span class="text-gradient">Greener planet.</span></h1>
+        <p class="hero-description">A better world starts with the little things you do every day. Build greener habits, celebrate your progress, and make every action count.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#habits">Start tracking <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="#about">Learn more</a>
+        </div>
+        <div class="hero-proof">
+          <div class="avatar-stack" aria-hidden="true"><span>🌱</span><span>🌍</span><span>♻️</span></div>
+          <p><strong>One habit at a time</strong><br><span>Progress, not perfection.</span></p>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a healthy green planet">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="sun-dot"></div>
+        <div class="planet"><div class="planet-land land-one"></div><div class="planet-land land-two"></div><div class="planet-land land-three"></div><span class="planet-leaf">✦</span></div>
+        <div class="floating-card floating-card-top"><span class="float-icon">🌳</span><span><strong>Grow good habits</strong><small>Every day matters</small></span></div>
+        <div class="floating-card floating-card-bottom"><span class="float-icon">💧</span><span><strong>Save more resources</strong><small>Start with one action</small></span></div>
+        <span class="sparkle sparkle-one">✳</span><span class="sparkle sparkle-two">✦</span><span class="sparkle sparkle-three">·</span>
+      </div>
+      <div class="hero-bottom">
+        <span><span class="tiny-leaf">✦</span> Track your everyday impact</span>
+        <span class="scroll-note">SCROLL TO EXPLORE <span>↓</span></span>
+      </div>
+    </section>
+
+    <section class="stats-strip section-shell" aria-label="Today's summary">
+      <div class="stat-item"><span class="stat-icon">🌱</span><div><strong id="heroScore">0<span>/100</span></strong><small>Today's eco-score</small></div></div>
+      <div class="stat-item"><span class="stat-icon">☑️</span><div><strong id="heroCompleted">0<span>/12</span></strong><small>Habits completed</small></div></div>
+      <div class="stat-item"><span class="stat-icon">🔥</span><div><strong id="heroStreak">0 days</strong><small>Current streak</small></div></div>
+      <div class="stat-note"><span class="note-spark">✦</span> Your small actions add up.</div>
+    </section>
+
+    <section class="section-shell section-block" id="habits">
+      <div class="section-heading">
+        <div><div class="eyebrow">MAKE IT A HABIT</div><h2>Your daily <span class="text-gradient">green checklist.</span></h2><p>Check off the eco-friendly actions you complete today.</p></div>
+        <div class="date-control"><button id="prevDay" class="icon-button" aria-label="Previous day">‹</button><div><span class="date-label">TRACKING DATE</span><strong id="selectedDate">Today</strong></div><button id="nextDay" class="icon-button" aria-label="Next day">›</button></div>
+      </div>
+      <div class="habit-toolbar">
+        <div class="filter-list" id="habitFilters" aria-label="Filter habits">
+          <button class="filter-chip selected" data-filter="All">All habits <span id="allCount">12</span></button>
+          <button class="filter-chip" data-filter="Water">💧 Water</button>
+          <button class="filter-chip" data-filter="Energy">⚡ Energy</button>
+          <button class="filter-chip" data-filter="Waste">♻️ Waste</button>
+          <button class="filter-chip" data-filter="Nature">🌳 Nature</button>
+        </div>
+        <span class="save-indicator"><span class="save-dot"></span> Saved on this device</span>
+      </div>
+      <div class="habit-layout">
+        <div class="habit-grid" id="habitGrid" aria-live="polite"></div>
+        <aside class="daily-summary">
+          <div class="summary-top"><span class="summary-label">YOUR DAILY IMPACT</span><span class="summary-leaf">✦</span></div>
+          <div class="score-ring" id="scoreRing" style="--score:0%">
+            <div class="score-ring-inner"><span class="score-number" id="scoreNumber">0</span><span class="score-outof">out of 100</span></div>
+          </div>
+          <h3 id="scoreMessage">Ready to make a difference?</h3>
+          <p id="scoreSubtext">Every small action is a step towards a healthier planet.</p>
+          <div class="summary-progress"><div class="summary-progress-label"><span>Daily progress</span><strong id="progressText">0%</strong></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
+          <div class="summary-completed"><span>Completed habits</span><strong id="completedText">0 of 12</strong></div>
+          <button class="button button-primary button-full" id="completeDayBtn">View my progress <span>↗</span></button>
+          <p class="summary-footnote">Your progress is saved locally in this browser.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="tips-section" id="tips">
+      <div class="section-shell section-block">
+        <div class="section-heading">
+          <div><div class="eyebrow">KNOW A LITTLE, DO A LOT</div><h2>Good ideas for a <span class="text-gradient">greener life.</span></h2><p>Simple changes that can make a real difference over time.</p></div>
+          <button class="button button-secondary refresh-tip" id="refreshTip">✦ Surprise me with a tip</button>
+        </div>
+        <div class="tips-grid">
+          <article class="tip-card tip-water"><div class="tip-top"><span class="tip-emoji">💧</span><span class="tip-number">01 / WATER</span></div><h3>Make every drop count.</h3><p>Turn off the tap while brushing, take shorter showers, and report leaking taps when you notice them.</p><span class="tip-tag">Save water</span></article>
+          <article class="tip-card tip-energy"><div class="tip-top"><span class="tip-emoji">⚡</span><span class="tip-number">02 / ENERGY</span></div><h3>Switch off, save more.</h3><p>Turn off lights and fans when leaving a room. Unplug chargers when you are not using them.</p><span class="tip-tag">Save electricity</span></article>
+          <article class="tip-card tip-waste"><div class="tip-top"><span class="tip-emoji">♻️</span><span class="tip-number">03 / WASTE</span></div><h3>Choose reusable first.</h3><p>Carry a reusable bottle and bag. Reuse items when possible and sort waste for proper recycling.</p><span class="tip-tag">Reduce waste</span></article>
+          <article class="tip-card tip-nature"><div class="tip-top"><span class="tip-emoji">🌿</span><span class="tip-number">04 / NATURE</span></div><h3>Give nature some care.</h3><p>Keep outdoor spaces clean, care for local plants, and choose walking or cycling for short trips when safe.</p><span class="tip-tag">Protect nature</span></article>
+        </div>
+        <div class="daily-tip-banner"><div class="daily-tip-icon">💡</div><div><span class="daily-tip-label">A LITTLE REMINDER</span><p id="dailyTipText">You don't need to be perfect. You just need to begin.</p></div><button class="icon-button tip-next" id="nextDailyTip" aria-label="Show another reminder">↻</button></div>
+      </div>
+    </section>
+
+    <section class="section-shell section-block" id="progress">
+      <div class="section-heading">
+        <div><div class="eyebrow">LOOK HOW FAR YOU'VE COME</div><h2>Your progress, <span class="text-gradient">at a glance.</span></h2><p>Celebrate consistency, not perfection. Every checked habit counts.</p></div>
+        <button class="button button-secondary" id="exportBtn">↓ Export my data</button>
+      </div>
+      <div class="progress-dashboard">
+        <article class="progress-card main-progress-card">
+          <div class="progress-card-heading"><div><span class="card-kicker">TODAY'S SCORE</span><h3>Your eco journey</h3></div><span class="mini-leaf">🌱</span></div>
+          <div class="big-score-row"><strong id="progressBigScore">0</strong><span>/ 100</span><span class="score-status" id="scoreStatus">Just getting started</span></div>
+          <div class="wide-progress-track"><div class="wide-progress-fill" id="wideProgressFill"></div></div>
+          <div class="wide-progress-labels"><span>Daily goal</span><strong id="wideProgressText">0% complete</strong></div>
+          <div class="progress-divider"></div>
+          <div class="mini-metrics"><div><span>☑</span><strong id="metricDone">0</strong><small>Habits done</small></div><div><span>🎯</span><strong id="metricLeft">12</strong><small>Still to try</small></div><div><span>🔥</span><strong id="metricStreak">0</strong><small>Day streak</small></div></div>
+        </article>
+        <article class="progress-card week-card">
+          <div class="progress-card-heading"><div><span class="card-kicker">YOUR CONSISTENCY</span><h3>Last 7 days</h3></div><span class="week-badge">7 DAYS</span></div>
+          <div class="week-chart" id="weekChart" aria-label="Daily eco-score chart"></div>
+          <p class="chart-caption">Your daily scores, calculated from completed habits.</p>
+        </article>
+        <article class="progress-card achievement-card">
+          <div class="progress-card-heading"><div><span class="card-kicker">MILESTONES</span><h3>Little wins</h3></div><span class="mini-leaf">🏆</span></div>
+          <div class="achievement-list" id="achievementList"></div>
+        </article>
+      </div>
+      <div class="history-panel">
+        <div class="history-heading"><div><h3>Recent activity</h3><p>Your saved daily check-ins on this device.</p></div><span class="history-pill" id="historyCount">0 days tracked</span></div>
+        <div class="history-list" id="historyList"></div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="section-shell about-layout">
+        <div class="about-visual"><div class="about-orbit"></div><div class="about-planet">🌎</div><span class="about-leaf leaf-a">🌿</span><span class="about-leaf leaf-b">🍃</span><div class="about-sticker">ONE PLANET<br><strong>ONE CHANCE</strong></div></div>
+        <div class="about-copy"><div class="eyebrow">WHY ECO TRACKER?</div><h2>A healthier planet begins with <span class="text-gradient">every one of us.</span></h2><p>Eco Tracker is a simple student-friendly project that helps people notice their everyday environmental choices. It turns good intentions into small, trackable actions.</p><p>We believe sustainability is not about doing everything perfectly. It is about making better choices more often, learning as we go, and inspiring others to join in.</p><div class="about-values"><div><span>🌱</span><strong>Start small</strong><small>Choose one habit today.</small></div><div><span>🔁</span><strong>Stay consistent</strong><small>Little actions add up.</small></div><div><span>🌍</span><strong>Think together</strong><small>Care for our shared home.</small></div></div></div>
+      </div>
+    </section>
+
+    <section class="final-cta section-shell"><div><span class="cta-spark">✦</span><h2>Ready to grow a greener routine?</h2><p>Your next small action can start right now.</p></div><a class="button button-light" href="#habits">Track today's habits <span>↗</span></a><div class="cta-decoration">✳</div></section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">🌿</span><span>eco<span class="brand-light">tracker</span></span></a><p>Made for a greener tomorrow, one habit at a time.</p><a href="#home" class="back-top">Back to top ↑</a><div class="footer-bottom"><span>© <span id="yearNow"></span> Eco Tracker · Student project</span><span>Small steps. Greener planet. <span class="footer-heart">♥</span></span></div></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
